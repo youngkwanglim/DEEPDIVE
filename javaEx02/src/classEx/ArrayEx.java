@@ -1,3 +1,5 @@
+package classEx;
+
 public class ArrayEx {
     public static void main(String[] args) {
         // 배열 선언 및 초기화

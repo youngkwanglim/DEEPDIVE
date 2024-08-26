@@ -1,3 +1,5 @@
+package classEx;
+
 import java.util.Arrays;
 
 public class javaEx03 {

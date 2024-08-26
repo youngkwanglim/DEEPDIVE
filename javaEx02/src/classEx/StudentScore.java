@@ -1,3 +1,5 @@
+package classEx;
+
 public class StudentScore {
     public static void main(String[] args) {
         int scores[][] = {
