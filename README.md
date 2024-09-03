@@ -1,3 +1,4 @@
-# hello-world
-### README.md : 리포지토리를 설명하는 파일 / 모든 repo에 권장
-Hello World repository for Git
+# kakao X goorm DEEPDIVE  
+### 백엔드 1회차 : 2024.08.19 ~
+
+학습한 내용을 기록합니다.
