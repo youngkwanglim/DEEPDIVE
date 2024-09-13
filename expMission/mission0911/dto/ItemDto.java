@@ -1,9 +1,10 @@
 package com.example.restapi_ex.dto;
 
-import lombok.*;
+import lombok.Data;
+import lombok.Getter;
 
 @Data
-public class User {
+public class ItemDto {
     private String id;
     private String name;
 }
