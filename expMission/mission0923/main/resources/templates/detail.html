@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>게시글 상세보기</title>
+</head>
+<body>
+<h1 th:text="${post.title}">게시글 제목</h1>
+<p>작성자: <span th:text="${post.author}">작성자 이름</span></p>
+<p th:text="${post.content}">게시글 내용</p>
+<hr>
+<!-- 로그인한 사용자가 작성자일 경우에만 수정/삭제 버튼을 표시 -->
+<div th:if="${isAuthor}">
+  <a th:href="@{/posts/{id}/edit(id=${post.id})}">수정하기</a>
+  <form th:action="@{/posts/{id}/delete(id=${post.id})}" method="post">
+    <input type="submit" value="삭제하기" />
+  </form>
+</div>
+</body>
+</html>
