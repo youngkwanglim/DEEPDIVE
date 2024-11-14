@@ -17,7 +17,8 @@ import org.springframework.web.util.ContentCachingResponseWrapper;
 @Component
 public class LoggerFilter implements Filter {
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
+            throws IOException, ServletException {
         var request = new ContentCachingRequestWrapper((HttpServletRequest) servletRequest);
         var response = new ContentCachingResponseWrapper((HttpServletResponse) servletResponse);
 
@@ -56,7 +57,8 @@ public class LoggerFilter implements Filter {
         });
 
         var responseBody = new String(response.getContentAsByteArray());
-        log.info("<<<<< uri : {}, method : {}, header : {}, body : {}", uri, method, responseHeaderValues, responseBody);
+        log.info("<<<<< uri : {}, method : {}, header : {}, body : {}", uri, method, responseHeaderValues,
+                responseBody);
 
         response.copyBodyToResponse();
     }

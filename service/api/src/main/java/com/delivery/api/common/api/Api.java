@@ -1,5 +1,6 @@
 package com.delivery.api.common.api;
 
+import com.delivery.api.common.error.ErrorCodeInterface;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,6 +22,24 @@ public class Api<T> {
         var api = new Api<T>();
         api.result = Result.OK();
         api.body = data;
+        return api;
+    }
+
+    public static Api<Object> ERROR(ErrorCodeInterface errorCodeInterface){
+        var api = new Api<Object>();
+        api.result = Result.ERROR(errorCodeInterface);
+        return api;
+    }
+
+    public static Api<Object> ERROR(ErrorCodeInterface errorCodeInterface, Throwable tx){
+        var api = new Api<Object>();
+        api.result = Result.ERROR(errorCodeInterface, tx);
+        return api;
+    }
+
+    public static Api<Object> ERROR(ErrorCodeInterface errorCodeInterface, String message){
+        var api = new Api<Object>();
+        api.result = Result.ERROR(errorCodeInterface, message);
         return api;
     }
 }
