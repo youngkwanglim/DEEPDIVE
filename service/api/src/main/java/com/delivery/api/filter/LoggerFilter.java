@@ -22,6 +22,8 @@ public class LoggerFilter implements Filter {
         var request = new ContentCachingRequestWrapper((HttpServletRequest) servletRequest);
         var response = new ContentCachingResponseWrapper((HttpServletResponse) servletResponse);
 
+        log.info("INIT URI : {}", request.getRequestURI());
+
         filterChain.doFilter(request, response);
 
         // request 정보
