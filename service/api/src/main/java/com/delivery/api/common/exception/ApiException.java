@@ -21,6 +21,12 @@ public class ApiException extends RuntimeException implements ApiExceptionInterf
         this.errorDescription = errorDescription;
     }
 
+    public ApiException(ErrorCodeInterface errorCodeInterface, Throwable tx) {
+        super(tx);
+        this.errorCodeInterface = errorCodeInterface;
+        this.errorDescription = errorCodeInterface.getDescription();
+    }
+
     public ApiException(ErrorCodeInterface errorCodeInterface, Throwable tx, String errorDescription) {
         super(tx);
         this.errorCodeInterface = errorCodeInterface;
