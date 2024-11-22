@@ -1,12 +1,14 @@
 package com.delivery.api.domain.user.business;
 
 import com.delivery.api.common.annotation.Business;
+import com.delivery.api.common.annotation.UserSession;
 import com.delivery.api.domain.token.business.TokenBusiness;
 import com.delivery.api.domain.token.controller.model.TokenResponse;
 import com.delivery.api.domain.user.controller.model.UserLoginRequest;
 import com.delivery.api.domain.user.controller.model.UserRegisterRequest;
 import com.delivery.api.domain.user.controller.model.UserResponse;
 import com.delivery.api.domain.user.converter.UserConverter;
+import com.delivery.api.domain.user.model.User;
 import com.delivery.api.domain.user.service.UserService;
 import com.delivery.db.user.UserEntity;
 import jakarta.validation.Valid;
@@ -54,8 +56,8 @@ public class UserBusiness {
         return tokenResponse;
     }
 
-    public UserResponse me(Long userId) {
-        var userEntity = userService.getUserWithThrow(userId);
+    public UserResponse me(@UserSession User user) {
+        var userEntity = userService.getUserWithThrow(user.getId());
         var response = userConverter.toResponse(userEntity);
         return response;
     }

@@ -1,8 +1,10 @@
 package com.delivery.api.domain.user.controller;
 
+import com.delivery.api.common.annotation.UserSession;
 import com.delivery.api.common.api.Api;
 import com.delivery.api.domain.user.business.UserBusiness;
 import com.delivery.api.domain.user.controller.model.UserResponse;
+import com.delivery.api.domain.user.model.User;
 import com.delivery.db.user.UserRepository;
 import java.util.Objects;
 import lombok.RequiredArgsConstructor;
@@ -20,11 +22,14 @@ public class UserApiController {
     private final UserBusiness userBusiness;
 
     @GetMapping("/me")
-    public Api<UserResponse> me() {
-        var requestContext = Objects.requireNonNull(RequestContextHolder.getRequestAttributes());
-        var userId = requestContext.getAttribute("userId", RequestAttributes.SCOPE_REQUEST);
+    public Api<UserResponse> me(@UserSession User user) {
 
-        var response = userBusiness.me(Long.parseLong(userId.toString()));
+
+//        var requestContext = Objects.requireNonNull(RequestContextHolder.getRequestAttributes());
+//        var userId = requestContext.getAttribute("userId", RequestAttributes.SCOPE_REQUEST);
+//
+//        var response = userBusiness.me(Long.parseLong(userId.toString()));
+        var response = new UserResponse();
         return Api.OK(response);
     }
 }
