@@ -29,7 +29,7 @@ public class UserApiController {
 //        var userId = requestContext.getAttribute("userId", RequestAttributes.SCOPE_REQUEST);
 //
 //        var response = userBusiness.me(Long.parseLong(userId.toString()));
-        var response = new UserResponse();
+        var response = userBusiness.me(user);
         return Api.OK(response);
     }
 }
